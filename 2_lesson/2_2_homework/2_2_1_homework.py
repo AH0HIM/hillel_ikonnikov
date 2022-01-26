@@ -12,7 +12,7 @@ cal_hour = str((m / n) - (m // n)).split(".")[1][0]
 
 if cal_day % 10 == 1 and cal_day % 100 != 11:
     day = "день"
-elif 2 <= cal_day % 10 <= 4 and not 12 <= n % 100 <= 14:
+elif 2 <= cal_day % 10 <= 4 and not 12 <= cal_day % 100 <= 14:
     day = "дня"
 else:
     day = "дней"
