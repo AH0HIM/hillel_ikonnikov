@@ -55,8 +55,8 @@ def get_meter(cal_meters):
 
 
 def get_print(day, hour, kilometer, meters, cal_day, cal_hour, cal_kilometer, cal_meters):
-    print(f"Требуется {cal_day} {day} и {cal_hour} {hour}, "
-          f"чтобы проехать маршрут длинной {cal_kilometer} {kilometer} и {cal_meters} {meters}.")
+    print(f"Требуется {int(cal_day)} {day} и {cal_hour} {hour}, "
+          f"чтобы проехать маршрут длинной {int(cal_kilometer)} {kilometer} и {cal_meters} {meters}.")
 
 
 get_start()
