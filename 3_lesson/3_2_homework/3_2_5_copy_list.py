@@ -3,7 +3,10 @@
 """
 from random import randint
 
+
 my_list = [randint(0, 10) for i in range(10)]
-new_list = my_list.copy()  # new_list = my_list[:]
+new_list = list()
+for element in my_list:
+    new_list.append(element)
 
 print("Список", my_list, "и копия списка", new_list)
