@@ -5,8 +5,8 @@
 
 from random import randint
 
-first_list = [randint(0, 20) for i in range(5)]
-second_lst = [randint(0, 20) for j in range(5)]
+first_list = [randint(0, 20) for _ in range(5)]
+second_lst = [randint(0, 20) for _ in range(5)]
 difference_list = list()
 
 for element in first_list:

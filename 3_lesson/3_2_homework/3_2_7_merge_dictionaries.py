@@ -12,7 +12,7 @@ dic2 = {3: 30, 4: 40}
 dic3 = {5: 50, 6: 60}
 my_dict = {}
 
-for key in (dic1, dic2, dic3):
-    my_dict.update(key)
+for key, value in (dic1.items(), dic2.items(), dic3.items()):
+    my_dict[key, value] = key, value
 
 print(my_dict)

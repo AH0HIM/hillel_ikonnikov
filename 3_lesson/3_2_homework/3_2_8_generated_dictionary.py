@@ -3,11 +3,6 @@
 а значения представляют собой квадраты ключей. Генерация ключей и значений должна быть выполнена через цикл.
 """
 
-# dic = dict()
-#
-# for i in range(1, 16):
-#     dic[i] = i ** 2
+my_dict = {i: i ** 2 for i in range(1, 16)}
 
-dic = {i: i ** 2 for i in range(1, 16)}
-
-print(dic)
+print(my_dict)
