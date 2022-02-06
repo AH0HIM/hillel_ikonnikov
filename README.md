@@ -6,8 +6,7 @@ git pull
 git status
 git add
 git diff
-git 
-
+git checkout -b
 
 
 
