@@ -9,10 +9,12 @@ Input
 Output
 (6, 9, 8, 6)
 """
+
 tuple1 = (1, 2, 3, 5)
 tuple2 = (3, 5, 2, 1)
 tuple3 = (2, 2, 3, 3)
 sum_col = []
+
 
 for i in range(max(len(tuple1), len(tuple2), len(tuple3))):
     if i >= min(len(tuple1), len(tuple2), len(tuple3)):
