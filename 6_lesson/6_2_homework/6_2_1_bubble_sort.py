@@ -24,7 +24,7 @@ sorted = bubble_sort(nums)
 print(sorted)
 
 
-# Test stage
+# Test Stage
 
 actual_result = bubble_sort([17, 24, 91, 96, 67, -27, 79, -71, -71, 58, 48, 88, 88, -16, 96, -98, 56, 92, 1, 32])
 expected_result = [-98, -71, -71, -27, -16, 1, 17, 24, 32, 48, 56, 58, 67, 79, 88, 88, 91, 92, 96, 96]
