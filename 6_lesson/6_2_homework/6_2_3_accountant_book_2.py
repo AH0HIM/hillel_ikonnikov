@@ -20,7 +20,7 @@ add_order_list = [
     [24387, 'на русском', 2, 4.59],
     [18762, 'The C Programming Language (2nd Edition)', 12, 78.80],
     [87236, 'C Programming Absolute Beginner"s Guide', 1, 23.55],
-    [58132, 'Effective Modern C++: 42 Specific Ways to Improve Your Use of C++11 and C++14', 9, 42.89]
+    [58132, 'Effective Modern C++: 42 Specific ...', 9, 42.89]
 ]
 
 order_list.extend(add_order_list)
