@@ -4,10 +4,10 @@
 """
 from random import randint
 
-MIN_MAX = 0
+MIN_NUM = 0
 MAX_NUM = 10
 
-my_list = [randint(MIN_MAX, MAX_NUM) for _ in range(randint(MIN_MAX, MAX_NUM))]
+my_list = [randint(MIN_NUM, MAX_NUM) for _ in range(randint(MIN_NUM, MAX_NUM))]
 
 
 def func(*args):
