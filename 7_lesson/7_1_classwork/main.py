@@ -1,10 +1,11 @@
-
 import random
+
 
 def print_debug(stage, first, second):
     print("\n" + stage)
     print(f"first: {first}")
     print(f"second: {second}")
+
 
 def list_unique(list):
     ret = []
@@ -13,12 +14,14 @@ def list_unique(list):
             ret.append(item)
     return ret
 
+
 def list_difference(first, second):
     difference = []
     for item in first:
         if item not in second:
             difference.append(item)
     return difference
+
 
 # Start
 

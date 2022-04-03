@@ -69,7 +69,7 @@ def test_file_count_numbers_in_all_completed_lines():
                     f'\nКоличество чисел в каждой строке файла не совпадает:\nActual: {actual}, Expected: {expected}'
         actual = 10
         print("\nКоличество чисел в каждой строке файла: {green}{act}{endcolor} из {green}{exp}{endcolor}".
-                  format(green='\033[32m', endcolor='\033[0m', act=actual, exp=expected))
+              format(green='\033[32m', endcolor='\033[0m', act=actual, exp=expected))
 
 
 test_file_count_numbers_in_all_completed_lines()
