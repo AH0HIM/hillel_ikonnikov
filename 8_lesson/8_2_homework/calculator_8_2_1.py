@@ -42,12 +42,9 @@ class Calculator:
         return True
 
     def check_formula(self, formula):
-        string = re.sub(' ', '', formula)
-        if len(string) < 3:
-            raise FormulaError("Входные данные меньше 3-х элементов")
-        if string[1] not in '+-/*':
-            raise FormulaError("Входные данные имеют не правильный оператор")
-        for item in string.split():
+        if len(formula) < 3:
+            raise FormulaError("The input data is less than 3 elements")
+        for item in formula.split():
             item_split = [i for i in re.split('([\+\-\*\/\(\)])', item) if i]
             self.final_formula += item_split
 
@@ -102,7 +99,7 @@ class Calculator:
                             num1 = self.numbers_stack.pop()
                             self.numbers_stack.append(self.calculate(num1, num2, op))
             except ValueError:
-                raise FormulaError("Входные данные имеют не правильный формат")
+                raise FormulaError("The input data is not in the correct format")
 
         while len(self.operators_stack) != 0:
             op = self.operators_stack.pop()
@@ -113,9 +110,9 @@ class Calculator:
         return self.numbers_stack, self.operators_stack
 
     def get_result(self):
-        print("Добро пожаловать в программу {green}'Калькулятор'{endcolor}!"
+        print("Welcome to {green}'Calculator'{endcolor}!"
               .format(green='\033[32m', endcolor='\033[0m'))
-        user_input = input("Введите формулу: ")
+        user_input = input("Enter the formula: ")
         formula = ''
         for i in user_input:
             if i != '=':
@@ -124,9 +121,9 @@ class Calculator:
         self.stack_flow(formula_list)
         print(f'{formula} = {int(self.result)}')
         while True:
-            user_input = input("Введите снова формулу или 'q', если хотите закрыть программу:\n")
+            user_input = input("Enter the formula again or 'q' if you want to close the program:\n")
             if user_input == 'q':
-                print("Программа {green}'Калькулятор'{endcolor} завершена!".
+                print("{green}'Calculator'{endcolor} program completed!".
                       format(green='\033[32m', endcolor='\033[0m'))
                 break
             else:
