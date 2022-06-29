@@ -6,36 +6,37 @@
 import datetime
 
 
-def benchmark(func):
-    def wrapper(*args, **kwargs):
-        t = datetime.datetime.now()
-        print(f"Time now {t}")
-        res = func(*args, **kwargs)
-        print(f"Function result is {res}")
-        print(func.__name__, datetime.datetime.now() - t)
+def time_result(func):
+    def wrapper(*args):
+        time = datetime.datetime.now()
+        res = func(*args)
+        print("\nTime: ", datetime.datetime.now() - time)
         return res
 
     return wrapper
 
 
-# @benchmark
-def fibonacci(n):
+@time_result
+def fibonacci():
     a, y = 0, 1
-    for _ in range(n):
+    for _ in range(100):
         b = a
         a = b + y
         y = b
         print(b)
 
 
-@benchmark
-def fibonacci_gen(n):
-    a, b = 0, 1
-    for _ in range(n):
-        a, b = b, a + b
-        yield a
+@time_result
+def fibonacci_generator():
+    def fibonacci_gen():
+        fib1, fib2 = 0, 1
+        for i in range(100):
+            fib1, fib2 = fib2, fib1 + fib2
+            yield fib1
 
-    for fib in fibonacci(100):
+    for fib in fibonacci_gen():
+        print(fib, end=' ')
 
 
-fibonacci_gen(100)
+fibonacci_generator()
+fibonacci()
