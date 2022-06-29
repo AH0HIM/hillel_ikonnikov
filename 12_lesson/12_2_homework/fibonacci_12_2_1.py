@@ -23,16 +23,16 @@ def fibonacci():
         b = a
         a = b + y
         y = b
-        print(b)
+        print(b, end=' ')
 
 
 @time_result
 def fibonacci_generator():
     def fibonacci_gen():
-        fib1, fib2 = 0, 1
+        a, b = 0, 1
         for i in range(100):
-            fib1, fib2 = fib2, fib1 + fib2
-            yield fib1
+            a, b = b, a + b
+            yield a
 
     for fib in fibonacci_gen():
         print(fib, end=' ')
