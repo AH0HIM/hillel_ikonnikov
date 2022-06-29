@@ -8,10 +8,10 @@ import datetime
 
 def time_function(func):
     def wrapper(*args):
-        t = datetime.datetime.now()
+        time = datetime.datetime.now()
         res = func(*args)
         print(f"{func.__name__}, The sum of the first {n} elements: {func(*args)}")
-        print(f"Function execution time: {datetime.datetime.now() - t}\n")
+        print(f"Function execution time: {datetime.datetime.now() - time}\n")
         return res
 
     return wrapper
