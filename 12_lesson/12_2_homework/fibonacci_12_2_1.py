@@ -6,37 +6,37 @@
 import datetime
 
 
-def time_result(func):
+def time_function(func):
     def wrapper(*args):
-        time = datetime.datetime.now()
+        t = datetime.datetime.now()
         res = func(*args)
-        print("\nTime: ", datetime.datetime.now() - time)
+        print(f"{func.__name__}, The sum of the first {n} elements: {func(*args)}")
+        print(f"Function execution time: {datetime.datetime.now() - t}\n")
         return res
 
     return wrapper
 
 
-@time_result
-def fibonacci():
-    a, y = 0, 1
-    for _ in range(100):
-        b = a
-        a = b + y
-        y = b
-        print(b, end=' ')
+@time_function
+def fibonacci_1(n):
+    fib1, fib2, fib_sum = 0, 1, 0
+    for _ in range(n):
+        fib_sum += fib1
+        fib1, fib2 = fib2, fib1 + fib2
+    return fib_sum
 
 
-@time_result
-def fibonacci_generator():
-    def fibonacci_gen():
-        a, b = 0, 1
-        for i in range(100):
-            a, b = b, a + b
-            yield a
+@time_function
+def fibonacci_2(n):
+    def fibonacci_generate(n):
+        fib1, fib2 = 0, 1
+        for _ in range(n):
+            yield fib1
+            fib1, fib2 = fib2, fib1 + fib2
 
-    for fib in fibonacci_gen():
-        print(fib, end=' ')
+    return sum(fibonacci_generate(n))
 
 
-fibonacci_generator()
-fibonacci()
+n = 100
+fibonacci_1(n)
+fibonacci_2(n)

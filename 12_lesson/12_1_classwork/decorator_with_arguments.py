@@ -74,15 +74,15 @@ def benchmark(func):
 
     return wrapper
 
-
-def my_decorator(func):
-    def wrapper(*args, **kwargs):
-        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        res = func(*args, **kwargs)
-        print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-        return res
-
-    return wrapper
+#
+# def my_decorator(func):
+#     def wrapper(*args, **kwargs):
+#         print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+#         res = func(*args, **kwargs)
+#         print('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+#         return res
+#
+#     return wrapper
 
 
 @my_decorator
