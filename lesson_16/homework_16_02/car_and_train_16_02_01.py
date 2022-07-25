@@ -15,34 +15,33 @@ import threading
 import time
 from threading import Thread
 
-car_speed = random.randrange(30, 170)
-train_speed = random.randrange(70, 110)
-crossroads = 0
+CAR_SPEED = random.randrange(30, 170)
+TRAIN_SPEED = random.randrange(70, 110)
+CROSSROADS = 20
+DISTANCE = 0
 
 
 def car_run(th):
-    global crossroads
-    distance = 0
+    global DISTANCE
     for i in range(0, 10):
-        crossroads += 1
-        distance += round(car_speed * (i / 60), 1)
+        DISTANCE += round(CAR_SPEED * (i / 60), 1)
         print(f'{threading.current_thread().name} '
-              f'speed: {car_speed} km/h, '
-              f'distance: {distance} m')
+              f'speed: {CAR_SPEED} km/h, '
+              f'distance: {DISTANCE} m')
         time.sleep(1)
-        if distance >= crossroads:
+        if DISTANCE >= CROSSROADS:
             th.join()
 
     print('Car finish')
 
 
 def train_run():
-    distance = 0
+    global DISTANCE
     for i in range(0, 10):
-        distance += round(train_speed * (i / 60), 1)
+        DISTANCE += round(TRAIN_SPEED * (i / 60), 1)
         print(f'{threading.current_thread().name} '
-              f'speed: {train_speed} km/h, '
-              f'distance: {distance} m')
+              f'speed: {TRAIN_SPEED} km/h, '
+              f'distance: {DISTANCE} m')
         time.sleep(1)
 
     print('Train finish')
