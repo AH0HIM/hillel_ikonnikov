@@ -57,6 +57,8 @@ def git_commit(commit_message, branch):
                         logger.error(push_result.stdout + push_result.stderr)
 
         else:
+            if 'Your branch is ahead of' in status_result.stdout:
+                logger.info(status_result.stdout)
             logger.info("Nothing to commit")
             return
 
