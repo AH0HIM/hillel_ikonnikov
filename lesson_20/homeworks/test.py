@@ -34,8 +34,8 @@ def git_commit(commit_message, branch):
 
     else:
         input('add')
-        # if status_result.stdout.find(GitClass.changes):
-        if 'Changes not staged for commit' in status_result.stdout:
+        if status_result.stdout.find(GitClass.changes):
+        # if 'Changes not staged for commit' in status_result.stdout:
             logger.info(status_result.stdout)
             subprocess.call(GitClass.add)
             if status_result.returncode == GitClass.error:
