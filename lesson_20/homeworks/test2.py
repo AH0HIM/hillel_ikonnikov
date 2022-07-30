@@ -52,6 +52,8 @@ class GitRun:
                     return
 
     def git_add(self):
+        print('===========================add')
+
         input('add')
         add_result = subprocess.run(GitClass.add,
                                     stdout=subprocess.PIPE,
@@ -66,6 +68,8 @@ class GitRun:
             self.git_commit()
 
     def git_commit(self):
+        print('===========================commit')
+
         input('commit')
         commit_result = subprocess.run(GitClass.commit.format(self.message),
                                        stdout=subprocess.PIPE,
@@ -80,6 +84,7 @@ class GitRun:
             self.git_push()
 
     def git_push(self):
+        print('===========================push')
         input('push')
         push_result = subprocess.run(GitClass.push.format(self.branch),
                                      stdout=subprocess.PIPE,
