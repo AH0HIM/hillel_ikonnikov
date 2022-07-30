@@ -61,15 +61,11 @@ def git_commit(commit_message, branch):
             return
 
 
-git_commit('test', 'origin')
+parser = argparse.ArgumentParser()
+parser.add_argument("-m", "--message", type=str, required=True, help="Enter a commit message")
+parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin/main")
 
+args = parser.parse_args()
 
-
-# if __name__ == '__main__':
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument("-m", "--message", type=str, help="Enter a commit message", default="innit")
-#     parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin/main")
-#
-#     args = parser.parse_args()
-#
-#     git_commit(args.commit_message, args.branch)
+if __name__ == '__main__':
+    git_commit(args.message, args.branch)
