@@ -40,8 +40,7 @@ def git_commit():
             logger.info(status_result.stdout)
             add_result = subprocess.call(GitCommand.ADD.value)
             if status_result.returncode == ResultCode.ERROR.value:
-                print(status_result.stdout + status_result.stderr)
-                print('Something wrong')
+                logger.error(status_result.stdout + status_result.stderr)
             else:
                 commit_result = subprocess.run(GitCommand.COMMIT.value.format(message),
                                                stdout=subprocess.PIPE,
