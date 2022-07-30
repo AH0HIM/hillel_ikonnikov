@@ -18,7 +18,7 @@ class GitClass:
     push = 'git push {}'
     ok = 0
     error = 1
-    changes = 'Changes to be committed'
+    changes = 'Changes not staged for commit'
 
 
 def git_commit(commit_message, branch):
@@ -29,6 +29,7 @@ def git_commit(commit_message, branch):
 
     if status_result.returncode == GitClass.error:
         logger.error(status_result.stdout + status_result.stderr)
+        return
 
     else:
         input('add')
@@ -57,6 +58,7 @@ def git_commit(commit_message, branch):
 
         else:
             logger.error("Nothing to commit")
+            return
 
 
 git_commit('test', 'origin')
@@ -66,7 +68,7 @@ git_commit('test', 'origin')
 # if __name__ == '__main__':
 #     parser = argparse.ArgumentParser()
 #     parser.add_argument("-m", "--message", type=str, help="Enter a commit message", default="innit")
-#     parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin")
+#     parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin/main")
 #
 #     args = parser.parse_args()
 #
