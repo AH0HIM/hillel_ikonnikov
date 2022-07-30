@@ -57,9 +57,16 @@ def git_commit(commit_message, branch):
                         logger.error(push_result.stdout + push_result.stderr)
 
         else:
+            input('push2')
             if 'Your branch is ahead of' in status_result.stdout:
-                logger.info(status_result.stdout)
-            logger.info("Nothing to commit")
+                push_result = subprocess.run(GitClass.push.format(branch),
+                                             stdout=subprocess.PIPE,
+                                             stderr=subprocess.PIPE,
+                                             encoding='windows-1251')
+                if status_result.returncode == GitClass.error:
+                    logger.error(push_result.stdout + push_result.stderr)
+            else:
+                logger.info("Nothing to commit")
             return
 
 
