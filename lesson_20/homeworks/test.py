@@ -58,7 +58,7 @@ def git_commit(commit_message, branch):
 
         else:
             input('push2')
-            push_result = subprocess.run(GitClass.push.format(branch),
+            push_result = subprocess.run('git push',
                                          stdout=subprocess.PIPE,
                                          stderr=subprocess.PIPE,
                                          encoding='windows-1251')
