@@ -6,9 +6,6 @@ from loguru import logger
 # logger.info("")
 logger.error("Something wrong")
 
-
-
-
 changes = 'Changes to be committed'
 message = 'innit'
 branch = 'origin/master'
@@ -36,7 +33,7 @@ def git_commit():
         logger.error(status_result.stdout + status_result.stderr)
     else:
         if status_result.stdout.find(changes):
-            # logger.info(status_result.stdout)
+            logger.info(status_result.stdout)
             add_result = subprocess.call(GitCommand.ADD.value)
             if status_result.returncode == ResultCode.ERROR.value:
                 logger.error(status_result.stdout + status_result.stderr)
