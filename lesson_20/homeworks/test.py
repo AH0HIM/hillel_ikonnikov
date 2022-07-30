@@ -58,16 +58,7 @@ def git_commit(commit_message, branch):
                         logger.error(push_result.stdout + push_result.stderr)
 
         else:
-            if status_result.stdout.find(GitClass.committed):
-                input('push2')
-                push_result = subprocess.run(GitClass.push.format(branch),
-                                             stdout=subprocess.PIPE,
-                                             stderr=subprocess.PIPE,
-                                             encoding='windows-1251')
-                if status_result.returncode == GitClass.error:
-                    logger.error(push_result.stdout + push_result.stderr)
-            else:
-                logger.info("Nothing to commit")
+            logger.info("Nothing to commit")
             return
 
 
