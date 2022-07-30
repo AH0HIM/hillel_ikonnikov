@@ -21,6 +21,8 @@ class GitClass:
     changes = 'Changes not staged for commit'
 
 
+
+
 def git_commit(commit_message, branch):
     status_result = subprocess.run(GitClass.status,
                                    stdout=subprocess.PIPE,
