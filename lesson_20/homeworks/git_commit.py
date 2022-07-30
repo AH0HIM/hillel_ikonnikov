@@ -92,4 +92,3 @@ args = parser.parse_args()
 if __name__ == '__main__':
     git_run = GitClass(args.message, args.branch)
     git_run.git_status()
-
