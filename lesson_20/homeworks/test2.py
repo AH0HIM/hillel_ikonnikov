@@ -95,13 +95,13 @@ class GitRun:
             return
 
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument("-m", "--message", type=str, required=True, help="Enter a commit message")
-# parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin")
-#
-# args = parser.parse_args()
+parser = argparse.ArgumentParser()
+parser.add_argument("-m", "--message", type=str, required=True, help="Enter a commit message")
+parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin")
+
+args = parser.parse_args()
 
 
 if __name__ == '__main__':
-    git_run = GitRun('innit', 'origin')
+    git_run = GitRun(args.message, args.branch)
     git_run.git_status()
