@@ -94,7 +94,6 @@ parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="
 args = parser.parse_args()
 
 if __name__ == '__main__':
-    # git_run = GitClass(args.message, args.branch)
     git_run = GitClass(args.message, args.branch)
 
     git_run.git_status()
