@@ -37,7 +37,7 @@ def git_commit():
         input()
     else:
         if status_result.stdout.find(changes):
-            logger.info(status_result.stdout)
+            # logger.info(status_result.stdout)
             add_result = subprocess.call(GitCommand.ADD.value)
             if status_result.returncode == ResultCode.ERROR.value:
                 logger.error(status_result.stdout + status_result.stderr)
@@ -56,7 +56,8 @@ def git_commit():
                                                  encoding='windows-1251')
 
         else:
-            logger.info("Nothing to commit")
+            print()
+            # logger.info("Nothing to commit")
 
 
 git_commit()
