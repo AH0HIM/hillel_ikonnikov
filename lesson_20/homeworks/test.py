@@ -35,7 +35,7 @@ def git_commit(commit_message, branch):
         input('add')
         if status_result.stdout.find(GitClass.changes):
             print(status_result.stdout)
-            add_result = subprocess.call(GitClass.add)
+            subprocess.call(GitClass.add)
             if status_result.returncode == GitClass.error:
                 logger.error('error')
             else:
@@ -44,21 +44,22 @@ def git_commit(commit_message, branch):
                                                stdout=subprocess.PIPE,
                                                stderr=subprocess.PIPE,
                                                encoding='windows-1251')
-                if status_result.returncode == GitClass.error:
-                    logger.error(commit_result.stdout + commit_result.stderr)
-
-                else:
-                    input('push')
-                    push_result = subprocess.run(GitClass.push.format(branch),
-                                                 stdout=subprocess.PIPE,
-                                                 stderr=subprocess.PIPE,
-                                                 encoding='windows-1251')
-                    if status_result.returncode == GitClass.error:
-                        logger.error(push_result.stdout + push_result.stderr)
+            #     if status_result.returncode == GitClass.error:
+            #         logger.error(commit_result.stdout + commit_result.stderr)
+            #
+            #     else:
+            #         input('push')
+            #         push_result = subprocess.run(GitClass.push.format(branch),
+            #                                      stdout=subprocess.PIPE,
+            #                                      stderr=subprocess.PIPE,
+            #                                      encoding='windows-1251')
+            #         if status_result.returncode == GitClass.error:
+            #             logger.error(push_result.stdout + push_result.stderr)
 
         else:
             logger.error("Nothing to commit")
             return
+
 
 
 parser = argparse.ArgumentParser()
@@ -69,5 +70,3 @@ args = parser.parse_args()
 
 if __name__ == '__main__':
     git_commit(args.message, args.branch)
-
-print('asd')
