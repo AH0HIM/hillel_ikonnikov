@@ -1,3 +1,10 @@
+# Other
+.idea
+.build
+.dist
+.logs
+.pdf_analyzer_package.egg-info
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
