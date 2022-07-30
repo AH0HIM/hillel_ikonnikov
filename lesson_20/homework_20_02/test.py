@@ -34,7 +34,6 @@ def git_commit():
 
     if status_result.returncode == ResultCode.ERROR.value:
         logger.error(status_result.stdout + status_result.stderr)
-        input()
     else:
         if status_result.stdout.find(changes):
             # logger.info(status_result.stdout)
