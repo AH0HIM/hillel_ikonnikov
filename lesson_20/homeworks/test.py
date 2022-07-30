@@ -58,7 +58,7 @@ def git_commit(commit_message, branch):
                         logger.error(push_result.stdout + push_result.stderr)
 
         else:
-            if status_result.stdout.find(GitClass.changes):
+            if status_result.stdout.find(GitClass.committed):
                 input('push2')
                 push_result = subprocess.run(GitClass.push.format(branch),
                                              stdout=subprocess.PIPE,
