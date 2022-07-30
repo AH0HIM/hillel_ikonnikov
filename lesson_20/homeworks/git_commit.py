@@ -89,7 +89,7 @@ class GitClass:
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--message", type=str, required=True, help="Enter a commit message")
-parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin")
+parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin/main")
 
 args = parser.parse_args()
 
