@@ -2,8 +2,8 @@ import subprocess
 from enum import Enum
 from loguru import logger
 
-logger.debug("")
-logger.info("")
+# logger.debug("")
+# logger.info("")
 logger.error("Something wrong")
 
 
