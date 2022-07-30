@@ -18,7 +18,6 @@ class GitClass:
     push = 'git push {}'
     ok = 0
     error = 1
-    changes = 'Changes not staged for commit'
     committed = 'Your branch is ahead'
 
 
@@ -34,8 +33,7 @@ def git_commit(commit_message, branch):
 
     else:
         input('add')
-        if status_result.stdout.find(GitClass.changes):
-        # if 'Changes not staged for commit' in status_result.stdout:
+        if 'Changes not staged for commit' in status_result.stdout:
             logger.info(status_result.stdout)
             subprocess.call(GitClass.add)
             if status_result.returncode == GitClass.error:
