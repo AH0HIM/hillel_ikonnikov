@@ -33,9 +33,8 @@ def git_commit():
                                    encoding='windows-1251')
 
     if status_result.returncode == ResultCode.ERROR.value:
-        # print(status_result.stdout + status_result.stderr)
-        # print('Something wrong')
         logger.error(status_result.stdout + status_result.stderr)
+        input()
     else:
         if status_result.stdout.find(changes):
             logger.info(status_result.stdout)
