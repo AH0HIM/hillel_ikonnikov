@@ -59,17 +59,14 @@ def git_commit(commit_message, branch):
             logger.error("Nothing to commit")
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--message", type=str, help='input commit message')
-parser.add_argument("--branch", type=str, help='input branch')
-args = parser.parse_args()
+git_commit('test', 'origin')
 
-git_commit(args.commit_message, args.branch)
+
 
 # if __name__ == '__main__':
 #     parser = argparse.ArgumentParser()
-#     parser.add_argument("commit_message")
-#     parser.add_argument("branch")
+#     parser.add_argument("-m", "--message", type=str, help="Enter a commit message", default="innit")
+#     parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin")
 #
 #     args = parser.parse_args()
 #
