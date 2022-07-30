@@ -1,6 +1,8 @@
 import subprocess
 import argparse
 from dataclasses import dataclass
+from enum import Enum
+
 from loguru import logger
 
 logger.add("logs/logs.log", format="{time} {level} {message}", level="DEBUG", rotation="10 KB")
@@ -14,9 +16,11 @@ class GitData:
     add = 'git add .'
     commit = 'git commit -m {}'
     push = 'git push {}'
-    ok = 0
-    error = 1
-    committed = 'Your branch is ahead'
+
+
+class GitEnum(Enum):
+    OK = 0
+    ERROR = 1
 
 
 class GitClass:
@@ -31,7 +35,7 @@ class GitClass:
                                        stderr=subprocess.PIPE,
                                        encoding='windows-1251')
 
-        if status_result.returncode == GitData.error:
+        if status_result.returncode == GitEnum.ERROR.value:
             logger.error(status_result.stdout + status_result.stderr)
             return
 
@@ -52,8 +56,8 @@ class GitClass:
                                     stdout=subprocess.PIPE,
                                     stderr=subprocess.PIPE,
                                     encoding='windows-1251')
-        if add_result.returncode == GitData.error:
-            logger.error('error')
+        if add_result.returncode == GitEnum.ERROR.value:
+            logger.error(add_result.stdout + add_result.stderr)
             return
 
         else:
@@ -65,7 +69,7 @@ class GitClass:
                                        stdout=subprocess.PIPE,
                                        stderr=subprocess.PIPE,
                                        encoding='windows-1251')
-        if commit_result.returncode == GitData.error:
+        if commit_result.returncode == GitEnum.ERROR.value:
             logger.error(commit_result.stdout + commit_result.stderr)
             return
 
@@ -78,7 +82,7 @@ class GitClass:
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
                                      encoding='windows-1251')
-        if push_result.returncode == GitData.error:
+        if push_result.returncode == GitEnum.ERROR.value:
             logger.error(push_result.stdout + push_result.stderr)
             return
 
@@ -90,5 +94,7 @@ parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="
 args = parser.parse_args()
 
 if __name__ == '__main__':
+    # git_run = GitClass(args.message, args.branch)
     git_run = GitClass(args.message, args.branch)
+
     git_run.git_status()
