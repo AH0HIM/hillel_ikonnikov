@@ -1,10 +1,14 @@
 import subprocess
 from enum import Enum
-from loguru import logger
 
-# logger.debug("")
-# logger.info("")
-logger.error("Something wrong")
+# from loguru import logger
+#
+#
+# logger.add("logs/logs.log", format="{time} {level} {message}",
+#            level="DEBUG", rotation="10 KB")
+#
+# logger.info("Changes to be committed")
+# logger.error("Something wrong")
 
 changes = 'Changes to be committed'
 message = 'innit'
@@ -17,7 +21,7 @@ class ResultCode(Enum):
 
 
 class GitCommand(Enum):
-    STATUS = 'git status asd'
+    STATUS = 'git status'
     ADD = 'git add .'
     COMMIT = 'git commit -m {}'
     PUSH = 'git push {}'
@@ -30,30 +34,32 @@ def git_commit():
                                    encoding='windows-1251')
 
     if status_result.returncode == ResultCode.ERROR.value:
-        logger.error(status_result.stdout + status_result.stderr)
+        print(status_result.stdout + status_result.stderr)
     else:
+        input('add')
         if status_result.stdout.find(changes):
-            logger.info(status_result.stdout)
+            print(status_result.stdout)
             add_result = subprocess.call(GitCommand.ADD.value)
             if status_result.returncode == ResultCode.ERROR.value:
-                logger.error(status_result.stdout + status_result.stderr)
+                print(status_result.stdout + status_result.stderr)
             else:
+                input('commit')
                 commit_result = subprocess.run(GitCommand.COMMIT.value.format(message),
                                                stdout=subprocess.PIPE,
                                                stderr=subprocess.PIPE,
                                                encoding='windows-1251')
                 if status_result.returncode == ResultCode.ERROR.value:
-                    logger.error(status_result.stdout + status_result.stderr)
+                    print(status_result.stdout + status_result.stderr)
 
                 else:
+                    input('push')
                     push_result = subprocess.run(GitCommand.PUSH.value.format(branch),
                                                  stdout=subprocess.PIPE,
                                                  stderr=subprocess.PIPE,
                                                  encoding='windows-1251')
 
         else:
-            print()
-            # logger.info("Nothing to commit")
+            print("Nothing to commit")
 
 
 git_commit()
