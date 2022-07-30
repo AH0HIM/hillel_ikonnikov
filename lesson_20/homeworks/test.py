@@ -32,14 +32,12 @@ def git_commit(commit_message, branch):
         return
 
     else:
-        input('add')
         if 'Changes not staged for commit' in status_result.stdout:
             logger.info(status_result.stdout)
             subprocess.call(GitClass.add)
             if status_result.returncode == GitClass.error:
                 logger.error('error')
             else:
-                input('commit')
                 commit_result = subprocess.run(GitClass.commit.format(commit_message),
                                                stdout=subprocess.PIPE,
                                                stderr=subprocess.PIPE,
@@ -48,7 +46,6 @@ def git_commit(commit_message, branch):
                     logger.error(commit_result.stdout + commit_result.stderr)
 
                 else:
-                    input('push')
                     push_result = subprocess.run(GitClass.push.format(branch),
                                                  stdout=subprocess.PIPE,
                                                  stderr=subprocess.PIPE,
@@ -57,7 +54,6 @@ def git_commit(commit_message, branch):
                         logger.error(push_result.stdout + push_result.stderr)
 
         else:
-            input('push2')
             push_result = subprocess.run(GitClass.push.format(branch),
                                          stdout=subprocess.PIPE,
                                          stderr=subprocess.PIPE,
