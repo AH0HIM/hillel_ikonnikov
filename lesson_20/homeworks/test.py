@@ -64,6 +64,7 @@ def git_commit(commit_message, branch):
                                              stdout=subprocess.PIPE,
                                              stderr=subprocess.PIPE,
                                              encoding='windows-1251')
+                input()
                 if status_result.returncode == GitClass.error:
                     logger.error(push_result.stdout + push_result.stderr)
             else:
