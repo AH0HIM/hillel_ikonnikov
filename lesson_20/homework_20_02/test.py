@@ -38,7 +38,7 @@ def git_commit():
         logger.error(status_result.stdout + status_result.stderr)
     else:
         if status_result.stdout.find(changes):
-            print(status_result.stdout)
+            logger.info(status_result.stdout)
             add_result = subprocess.call(GitCommand.ADD.value)
             if status_result.returncode == ResultCode.ERROR.value:
                 print(status_result.stdout + status_result.stderr)
@@ -49,8 +49,7 @@ def git_commit():
                                                stderr=subprocess.PIPE,
                                                encoding='windows-1251')
                 if status_result.returncode == ResultCode.ERROR.value:
-                    print(status_result.stdout + status_result.stderr)
-                    print('Something wrong')
+                    logger.error(status_result.stdout + status_result.stderr)
 
                 else:
                     push_result = subprocess.run(GitCommand.PUSH.value.format(branch),
@@ -59,7 +58,7 @@ def git_commit():
                                                  encoding='windows-1251')
 
         else:
-            print("Nothing to commit")
+            logger.info("Nothing to commit")
 
 
 git_commit()
