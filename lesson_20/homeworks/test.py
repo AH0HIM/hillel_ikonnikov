@@ -58,6 +58,7 @@ def git_commit(commit_message, branch):
 
         else:
             input('push2')
+            print(status_result.stdout)
             if 'Your branch is ahead of' in status_result.stdout:
                 push_result = subprocess.run(GitClass.push.format(branch),
                                              stdout=subprocess.PIPE,
