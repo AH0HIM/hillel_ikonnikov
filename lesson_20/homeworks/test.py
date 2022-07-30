@@ -68,7 +68,7 @@ def git_commit(commit_message, branch):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--message", type=str, required=True, help="Enter a commit message")
-parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin/main")
+parser.add_argument("-b", "--branch", type=str, help="Enter a branch", default="origin")
 
 args = parser.parse_args()
 
