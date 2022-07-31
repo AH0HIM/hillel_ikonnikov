@@ -11,14 +11,14 @@ logger.error("Something wrong")
 
 
 @dataclass(frozen=True)
-class GitData:
+class GitCommands:
     status = 'git status'
     add = 'git add .'
     commit = 'git commit -m {}'
     push = 'git push {}'
 
 
-class GitEnum(Enum):
+class ExitCodes(Enum):
     OK = 0
     ERROR = 1
 
@@ -30,12 +30,12 @@ class GitClass:
         self.branch = branch
 
     def git_status(self):
-        status_result = subprocess.run(GitData.status,
+        status_result = subprocess.run(GitCommands.status,
                                        stdout=subprocess.PIPE,
                                        stderr=subprocess.PIPE,
                                        encoding='windows-1251')
 
-        if status_result.returncode == GitEnum.ERROR.value:
+        if status_result.returncode == ExitCodes.ERROR:
             logger.error(status_result.stdout + status_result.stderr)
             return
 
@@ -52,11 +52,11 @@ class GitClass:
                     return
 
     def git_add(self):
-        add_result = subprocess.run(GitData.add,
+        add_result = subprocess.run(GitCommands.add,
                                     stdout=subprocess.PIPE,
                                     stderr=subprocess.PIPE,
                                     encoding='windows-1251')
-        if add_result.returncode == GitEnum.ERROR.value:
+        if add_result.returncode == ExitCodes.ERROR:
             logger.error(add_result.stdout + add_result.stderr)
             return
 
@@ -65,11 +65,11 @@ class GitClass:
             self.git_commit()
 
     def git_commit(self):
-        commit_result = subprocess.run(GitData.commit.format(self.message),
+        commit_result = subprocess.run(GitCommands.commit.format(self.message),
                                        stdout=subprocess.PIPE,
                                        stderr=subprocess.PIPE,
                                        encoding='windows-1251')
-        if commit_result.returncode == GitEnum.ERROR.value:
+        if commit_result.returncode == ExitCodes.ERROR:
             logger.error(commit_result.stdout + commit_result.stderr)
             return
 
@@ -78,11 +78,11 @@ class GitClass:
             self.git_push()
 
     def git_push(self):
-        push_result = subprocess.run(GitData.push.format(self.branch),
+        push_result = subprocess.run(GitCommands.push.format(self.branch),
                                      stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE,
                                      encoding='windows-1251')
-        if push_result.returncode == GitEnum.ERROR.value:
+        if push_result.returncode == ExitCodes.ERROR:
             logger.error(push_result.stdout + push_result.stderr)
             return
 
@@ -95,5 +95,4 @@ args = parser.parse_args()
 
 if __name__ == '__main__':
     git_run = GitClass(args.message, args.branch)
-
     git_run.git_status()
