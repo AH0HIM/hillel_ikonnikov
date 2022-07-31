@@ -2,7 +2,6 @@ import subprocess
 import argparse
 from dataclasses import dataclass
 from enum import Enum
-
 from loguru import logger
 
 logger.add("logs/logs.log", format="{time} {level} {message}", level="DEBUG", rotation="10 KB")
