@@ -1,7 +1,7 @@
 import allure
 import pytest
 from selenium import webdriver
-from selenium.webdriver.android.webdriver import WebDriver
+from selenium.webdriver.chrome.webdriver import WebDriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 
